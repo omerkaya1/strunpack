@@ -30,7 +30,8 @@ func StringParse(strToParse string) string {
 			for j := i; j < len(toRune); j++ {
 				if !unicode.IsDigit(toRune[j]) {
 					m, _ := strconv.ParseInt(string(digits), 10, 64)
-					str.WriteString(strings.Repeat(string(str.String()[str.Len()-1]), int(m)-1))
+					last := string(str.String()[str.Len()-1])
+					str.WriteString(strings.Repeat(last, int(m)-1))
 					end = false
 					i = j - 1
 					break
@@ -39,7 +40,8 @@ func StringParse(strToParse string) string {
 			}
 			if end {
 				m, _ := strconv.ParseInt(string(digits), 10, 64)
-				str.WriteString(strings.Repeat(string(str.String()[str.Len()-1]), int(m)-1))
+				last := string(str.String()[str.Len()-1])
+				str.WriteString(strings.Repeat(last, int(m)-1))
 			}
 			break
 		// Ignore only digits
